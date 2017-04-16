@@ -1,0 +1,23 @@
+　　目前已知受影响的 Windows 版本包括但不限于：Windows NT，Windows 2000（没错，古董也支持）、Windows XP、Windows 2003、Windows Vista、Windows 7、Windows 8，Windows 2008、Windows 2008 R2、Windows Server 2012 SP0。
+　　故事还要从一年前说起，2016 年 8 月有一个 “Shadow Brokers” 的黑客组织号称入侵了方程式组织窃取了大量机密文件，并将部分文件公开到了互联网上，方程式（Equation Group）据称是 NSA（美国国家安全局）下属的黑客组织，有着极高的技术手段。这部分被公开的文件包括不少隐蔽的地下的黑客工具。另外 “Shadow Brokers” 还保留了部分文件，打算以公开拍卖的形式出售给出价最高的竞价者，“Shadow Brokers” 预期的价格是 100 万比特币（价值接近5亿美金）。这一切听起来难以置信，以至于当时有不少安全专家对此事件保持怀疑态度，“Shadow Brokers” 的拍卖也因此一直没有成功。 
+　　北京时间 2017 年 4 月 14 日晚，“Shadow Brokers” 终于忍不住了，在推特上放出了他们当时保留的部分文件，解压密码是 “Reeeeeeeeeeeeeee”。
+  　这次的文件有三个目录，分别为“Windows”、“Swift” 和 “OddJob”，包含一堆令人震撼的黑客工具（我们挑几个重要的列举如下）：
+EXPLODINGCAN 是 IIS 6.0 远程漏洞利用工具
+ETERNALROMANCE 是 SMB1 的重量级利用，可以攻击开放了 445 端口的 Windows XP, 2003, Vista, 7, Windows 8, 2008, 2008 R2 并提升至系统权限。
+除此之外 ERRATICGOPHER 、ETERNALBLUE 、ETERNALSYNERGY 、ETERNALCHAMPION 、EDUCATEDSCHOLAR、 EMERALDTHREAD 等都是 SMB 漏洞利用程序，可以攻击开放了 445 端口的 Windows 机器。
+ESTEEMAUDIT 是 RDP 服务的远程漏洞利用工具，可以攻击开放了3389 端口的 Windows 机器。
+FUZZBUNCH 是一个类似 MetaSploit 的漏洞利用平台。
+ODDJOB 是无法被杀毒软件检测的 Rootkit 利用工具。
+ECLIPSEDWING 是 Windows 服务器的远程漏洞利用工具。
+ESKIMOROLL 是 Kerberos 的漏洞利用攻击，可以攻击 Windows 2000/2003/2008/2008 R2 的域控制器。
+　　不放不要紧，放出来吓坏了一众小伙伴。这些文件包含多个 Windows 神洞的利用工具，只要 Windows 服务器开了135、445、3389 其中的端口之一，有很大概率可以直接被攻击，这相比于当年的 MS08-067 漏洞有过之而无不及啊，如此神洞已经好久没有再江湖上出现过了。 
+
+缓解措施
+　　所有 Windows 服务器、个人电脑，包括 XP/2003/Win7/Win8，Win 10 最好也不要漏过，全部使用防火墙过滤/关闭 137、139、445端口；对于 3389 远程登录，如果不想关闭的话，至少要关闭智能卡登录功能。
+　　剩下的就是请稳定好情绪，坐等微软出补丁。
+
+参考 
+Shadow Brokers Release New Files Revealing Windows Exploits, SWIFT Attacks
+The Shadow Brokers
+https://github.com/misterch0c/shadowbroker/
+https://gist.github.com/misterch0c/08829bc65b208609d455a9f4aeaa2a6c
